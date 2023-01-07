@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .firstdiv{
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .maindiv{
+           display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="firstdiv">
+     <div class="maindiv">
+        <p>Enter a new item : <p> 
+        <input type="text" id="txtval">
+        <button onclick="additem()">Add Item</button> 
+    </div>
+        <ul id="list"></ul>
+    </div>
+
+<script>
+    count = 0;
+    function additem() {
+        var li = document.createElement("li");
+        li.setAttribute("id", "li" +count);
+        var val = document.getElementById("txtval").value;
+        
+        var kk = document.createTextNode(val);
+        li.appendChild(kk);
+
+        var buton = document.createElement("button");
+        buton.innerHTML="Remove";
+        buton.setAttribute("onclick", 'remove("'+'li'+count+'")')
+        li.appendChild(buton);
+
+        count+=1;
+        document.getElementById("list").appendChild(li);
+    }
+
+    function remove(x) {
+        var listval =document.getElementById(x);
+        document.getElementById("list").removeChild(listval); 
+    }
+</script>
+
+</body>
+</html>
